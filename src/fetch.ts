@@ -54,7 +54,7 @@ export async function main(material: number) {
     }
 }
 
-export async function complete(_current: FormData, e: FormData) {
+export async function complete(_current: {data: boolean} | null, e: FormData) {
     const id = e.get('id')
     const complete = e.get('complete')
 
