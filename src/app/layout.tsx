@@ -24,10 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} font-[family-name:var(--font-geist-sans)] antialiased bg-gray-50`}>
+        <main className="max-w-7xl mx-auto p-6 lg:py-12">
+          {children}
+        </main>
       </body>
     </html>
   );

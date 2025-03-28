@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Module {
+  id Int @id @default(autoincrement())
+  number Int @unique
+  title String
+  material Material[]
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model Material {
+  id Int @id @default(autoincrement())
+  thumbnail String
+  video String
+  number Int @unique
+  title String
+  description String?
+  complete Boolean @default(false)
+  module Module @relation(fields: [moduleId], references: [id])
+  moduleId Int
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
