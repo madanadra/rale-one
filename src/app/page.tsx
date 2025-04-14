@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { PiChartPieSliceBold, PiPlayCircleBold, PiPlayFill, PiCheckBold } from "react-icons/pi";
 
+export const dynamic = 'force-dynamic'
+
 export default function Home() {
   const Load = () => {
     return (

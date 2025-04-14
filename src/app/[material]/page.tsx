@@ -5,6 +5,8 @@ import { Suspense } from "react"
 import { PiTextOutdentBold } from "react-icons/pi"
 import Complete from "./complete"
 
+export const dynamic = 'force-dynamic'
+
 export default async function Part({params}: {params: Promise<{ material: string }>}) {
     const { material } = await params
 

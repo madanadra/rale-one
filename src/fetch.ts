@@ -54,25 +54,24 @@ export async function main(material: number) {
     }
 }
 
-export async function complete(_current: {data: boolean} | null, e: FormData) {
+export async function complete(_current: boolean, e: FormData) {
     const id = e.get('id')
     const complete = e.get('complete')
+    const value = complete ? true : false
 
     try {
-        const res = await prisma.material.update({
+        await prisma.material.update({
             where: {
                 id: Number(id)
             },
             data: {
-                complete: complete ? true : false
+                complete: value
             }
         })
 
-        if (!res) return {data: complete ? false : true}
-
-        return {data: res.complete}
+        return value
 
     } catch {
-        return {data: complete ? false : true}
+        return !value
     }
 }
